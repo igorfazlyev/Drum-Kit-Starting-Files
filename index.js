@@ -20,3 +20,13 @@ for (let button of buttons){
         })
     };
 }
+
+document.addEventListener("keydown", function(event){
+    //console.log(event);
+    const pressedKey = event.key.toLowerCase();
+    if (pressedKey in drums) {
+        const drum = drums[pressedKey];
+        const drumSound = new Audio(drum.sound);
+        drumSound.play();
+    }
+})

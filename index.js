@@ -13,10 +13,10 @@ for (let button of buttons){
     if  (letter in drums){
         let drum = drums[letter];
         button.style.backgroundImage = `url("${drum.image}")`;
+
         button.addEventListener("click", function(){
-            const drumSound = new Audio(drum.sound);
-            drumSound.play();
-            this.style.color = "white";
+            playDrum(drum);
+            //this.style.color = "white";
         })
     };
 }
@@ -25,8 +25,12 @@ document.addEventListener("keydown", function(event){
     //console.log(event);
     const pressedKey = event.key.toLowerCase();
     if (pressedKey in drums) {
-        const drum = drums[pressedKey];
-        const drumSound = new Audio(drum.sound);
+        playDrum(drums[pressedKey]);
         drumSound.play();
     }
 })
+
+function playDrum(drum){
+    const drumSound = new Audio(drum.sound);
+    drumSound.play();
+}
